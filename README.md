@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+This demonstates a breaking change/issue with migrating from mui v4 -> v5. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The `main` branch is a working v4 app. 
 
-In the project directory, you can run:
+Run the application `yarn start` see it works. Run the tests, they pass. 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Now follow the [migration instructions](https://mui.com/guides/migration-v4/#migration-steps)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+yarn add @mui/material @mui/styles @emotion/react @emotion/styled
+npx @mui/codemod v5.0.0/preset-safe src
+```
 
-### `npm test`
+This works successfully, and the application will start fine. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+However, the tests now fail with this error: 
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  ● <MyComponent/> › has some text
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    TypeError: spacing is not a function
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+      10 |   ({ spacing, palette }) => ({
+      11 |     root: {
+    > 12 |         padding: spacing(2),
+         |                  ^
+      13 |         border: "solid 1px red",
+      14 |     }
+      15 |   })
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
