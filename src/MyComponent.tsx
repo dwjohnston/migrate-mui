@@ -1,19 +1,11 @@
 
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import { useStyles } from './style';
 
 export type MyComponentProps = {
 };
 
 
-export const useStyles = makeStyles(
-  ({ spacing, palette }) => ({
-    root: {
-        padding: spacing(2),
-        border: "solid 1px red",
-    }
-  })
-);
 
 
 
